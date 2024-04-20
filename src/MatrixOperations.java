@@ -92,7 +92,6 @@ public class MatrixOperations {
     }
 
     public static double dotProduct(double[][] matrix1, double[][] matrix2){
-        // Check if the matrices have compatible dimensions for dot product
         int rows1 = matrix1.length;
         int cols1 = matrix1[0].length;
         int rows2 = matrix2.length;
@@ -102,10 +101,8 @@ public class MatrixOperations {
             throw new IllegalArgumentException("Matrices must have the same dimensions for dot product");
         }
 
-        // Initialize the result to 0
         double result = 0;
 
-        // Iterate through the matrices and calculate the dot product
         for (int i = 0; i < rows1; i++) {
             for (int j = 0; j < cols1; j++) {
                 result += matrix1[i][j] * matrix2[i][j];

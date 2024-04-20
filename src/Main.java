@@ -6,7 +6,7 @@ public class Main {
 
         double[][] betaHat = calculateBetaHat(X, Y);
 
-        System.out.println("Beta Hat: ");
+        System.out.println("Beta Hat Vector: ");
         MatrixOperations.printMatrix(betaHat);
 
         double[][] inputMatrix = {
@@ -26,14 +26,14 @@ public class Main {
     private static double[][] calculateBetaHat(double[][] X, double[][] Y) {
         double[][] Xt = MatrixOperations.transposeMatrix(X);
         double[][] XtX = MatrixOperations.matrixMultiplication(Xt, X);
-        double[][] AtY = MatrixOperations.matrixMultiplication(Xt, Y);
+        double[][] XtY = MatrixOperations.matrixMultiplication(Xt, Y);
         double[][] inverseXtX = MatrixOperations.inverseMatrix(XtX);
 
         if (inverseXtX == null) {
             return null;
         }
 
-        return MatrixOperations.matrixMultiplication(inverseXtX, AtY);
+        return MatrixOperations.matrixMultiplication(inverseXtX, XtY);
     }
 
     private static double predictYValue(double[][] betaHat, double[][] inputMatrix) {
